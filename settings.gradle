@@ -1,0 +1,6 @@
+println "settings start"
+rootProject.name = 'learngradle'
+include 'project1'
+include 'project2'
+
+println "settings end"
