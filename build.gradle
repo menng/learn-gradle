@@ -33,11 +33,6 @@ gradle.taskGraph.whenReady {
     println "taskGraph.whenReady"
 }
 
-// 构建完之后执行
-gradle.buildFinished{
-    result ->
-        println "buildFinished"
-}
 
 task aTask(dependsOn: 'bTask') {
     println("aTask")
@@ -50,7 +45,7 @@ task aTask(dependsOn: 'bTask') {
     }
 }
 
-task bTask() {
+task bTask {
     println("bTask")
     doFirst {
         println("bTask First")
@@ -63,6 +58,7 @@ aTask.dependsOn("bTask")
 // 自定义Task类
 class IncrementTask extends DefaultTask {
     String msg = "default"
+
     IncrementTask() {
         group '自定义任务'
         description("任务描述")
@@ -82,5 +78,11 @@ task printMsg(type: IncrementTask) {
 // 使用Task2
 tasks.create('printMsg2', IncrementTask) {
     msg = "print msg2"
+}
+
+// 构建完之后执行
+gradle.buildFinished{
+    result -> println "delete rootDir/build/libs"
+    delete "build/libs"
 }
 
