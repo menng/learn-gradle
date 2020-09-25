@@ -70,7 +70,7 @@ plugins {
 
 ## Gradle中的Task
 
-```jsx
+```groovy
 // 自定义task
 task aTask {
     println "sss"
@@ -137,6 +137,7 @@ IDEA：help -> dependencies
 - [allprojects 与 subprojects区别](https://blog.csdn.net/u013700502/article/details/85231687)
 - [引入插件的两种方式的区别：apply plugin 与 plugins id](https://stackoverflow.com/questions/32352816/what-the-difference-in-applying-gradle-plugin)
 - [[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'](https://stackoverflow.com/questions/26615235/explain-what-is-meant-by-this-code)
+- [api、implementation和compile区别](https://www.notion.so/menng/Gradle-4ce7ebc205b640bf9f3c4ad677cd176e#341b8b93b83343c48470ac88e83a20d6)
 - [using-gradle-to-build-a-jar-with-dependencies](https://stackoverflow.com/questions/4871656/using-gradle-to-build-a-jar-with-dependencies)
 ## 参考文档
 

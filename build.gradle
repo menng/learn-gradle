@@ -8,6 +8,7 @@ subprojects {
         mavenCentral()
     }
 
+    // 指定gradle插件的仓库
     buildscript {
         repositories {
             maven {
