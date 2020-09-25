@@ -2,5 +2,7 @@ println "settings start"
 rootProject.name = 'learngradle'
 include 'project1'
 include 'project2'
+include 'project3'
 
 println "settings end"
+

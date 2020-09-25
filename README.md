@@ -11,6 +11,7 @@
 rootProject.name = 'learngradle'
 include 'project1'
 include 'project2'
+include 'project3'
 ```
 
 工程根目录下有个build.gradle文件，每个project下面也有一个自己的build.gradle文件。根目录下的配置文件可以删除，非必须的，存在的意思是将子module项目的配置提取到根目录下的build.gradle中统一管理。
@@ -56,13 +57,13 @@ buildScript() 配置的是gradle脚本执行所需依赖。
 
 ```groovy
 plugins {
-	id "java"
+    id "java"
 }
 ```
 
 ## Gradle工作时序
 
-- Initiliazation，初始化阶段为每个module创建Project对象。settings.gradle也会被解析为Settings对象。
+- Initialization，初始化阶段为每个module创建Project对象。settings.gradle也会被解析为Settings对象。
 - Configuration，解析每个module的build.gradle文件，确定tasks执行顺序，并且task处于待执行状态。
 - 执行Task，Task是gradle的执行单元。
 - gradle.buildFinished，所有待执行Task执行完成后，收尾工作（可选）。
@@ -136,7 +137,7 @@ IDEA：help -> dependencies
 - [allprojects 与 subprojects区别](https://blog.csdn.net/u013700502/article/details/85231687)
 - [引入插件的两种方式的区别：apply plugin 与 plugins id](https://stackoverflow.com/questions/32352816/what-the-difference-in-applying-gradle-plugin)
 - [[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'](https://stackoverflow.com/questions/26615235/explain-what-is-meant-by-this-code)
-
+- [using-gradle-to-build-a-jar-with-dependencies](https://stackoverflow.com/questions/4871656/using-gradle-to-build-a-jar-with-dependencies)
 ## 参考文档
 
 - [gradle入门到实战](https://www.cnblogs.com/leipDao/p/10385155.html)

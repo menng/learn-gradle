@@ -1,38 +1,37 @@
-plugins {
-    id 'java'
-}
+subprojects {
+    apply plugin: "java-library"
 
+    group 'org.example'
+    version '1.0-SNAPSHOT'
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+    repositories {
+        mavenCentral()
+    }
 
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    buildscript {
+        repositories {
+            maven {
+                url "http://maven.aliyun.com/nexus/content/groups/public/"
+            }
+        }
+    }
 }
 
 afterEvaluate{
-    project ->
-        println "root module afterEvaluate -----> $project.name"
+    project -> println "root module afterEvaluate -----> $project.name"
 }
 
 gradle.beforeProject{
-    project ->
-        println "beforeProject $project.name"
+    project -> println "beforeProject $project.name"
 }
 
 gradle.afterProject{
-    project ->
-        println "afterProject $project.name"
+    project -> println "afterProject $project.name"
 }
 
 gradle.taskGraph.whenReady {
     println "taskGraph.whenReady"
 }
-
 
 task aTask(dependsOn: 'bTask') {
     println("aTask")
@@ -85,4 +84,3 @@ gradle.buildFinished{
     result -> println "delete rootDir/build/libs"
     delete "build/libs"
 }
-

@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(":project2")
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.10'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+gradle.buildFinished {
+    result -> println("copy build/libs/*.jar to rootDir/build/libs")
+    copy {
+        from("build/libs")
+        include("*.jar")
+        into(rootProject.getRootDir().getAbsolutePath() + "/build/libs")
+    }
+}
+
+jar {
+    manifestContentCharset 'utf-8'
+    metadataCharset 'utf-8'
+    manifest {
+        attributes('Main-Class': 'ApiAndImplementation')
+    }
+
+    // fatjar
+    from {
+        configurations.runtimeClasspath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}

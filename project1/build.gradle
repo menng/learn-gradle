@@ -1,21 +1,4 @@
-plugins {
-    id 'java'
-}
-
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
-gradle.buildFinished {
-    result -> println("copy build/libs/*.jar to rootDir/build/libs")
-    copy {
-        from("build/libs")
-        include("*.jar")
-        into(rootProject.getRootDir().getAbsolutePath() + "/build/libs")
-    }
-}
