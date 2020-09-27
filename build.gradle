@@ -35,6 +35,7 @@ gradle.taskGraph.whenReady {
 }
 
 task aTask(dependsOn: 'bTask') {
+//    dependsOn("bTask")
     println("aTask")
     doFirst {
         println "doFirst"
